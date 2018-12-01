@@ -18,14 +18,14 @@ Find [linuxserver.io][linuxserverurl] for support at:
 ## Usage
 
 ```
-docker create --name=rutorrent \
+docker create --name=remotetorrent \
 -v <path to data>:/config \
 -v <path to downloads>:/downloads \
 -e PGID=<gid> -e PUID=<uid> \
 -e TZ=<timezone> \
 -p 80:80 -p 5000:5000 \
 -p 51413:51413 -p 6881:6881/udp \
-linuxserver/rutorrent
+bachmma1/remotetorrent
 ```
 
 ## Parameters
@@ -106,7 +106,7 @@ rEmote can be found at `<your-ip>:80/remote`
 
 rEmote needs a mariadb backend to work properly. Make sure you have one set up and configured it:
 
-```mariadb
+```sql
 CREATE DATABASE IF NOT EXISTS 'remoteDB';
 CREATE USER 'remote'@'<ip of your rtorrent-docker-container>' IDENTIFIED BY 'remotepassword0815';
 GRANT USAGE ON * . * TO 'remote'@'<ip of your rtorrent-docker-container>' IDENTIFIED BY 'remotepassword0815' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
@@ -121,17 +121,9 @@ Link to the [wiki][remotewikiurl]
 
 ## UNRAID users
 
-** Important note for unraid users or those running services such as a webserver on port 80, change port 80 assignment **
+Important note for unraid users or those running services such as a webserver on port 80, change port 80 assignment
 
 ## Info
 
-* Shell access whilst the container is running: `docker exec -it rutorrent /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f rutorrent`
-
-* container version number 
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' rutorrent`
-
-* image version number
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/rutorrent`
+* Shell access whilst the container is running: `docker exec -it remotetorrent /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f remotetorrent`
