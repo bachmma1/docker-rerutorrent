@@ -7,7 +7,7 @@ Linuxserver.io docker-rutorrent extended with remote (rtorrent-web-ui) originall
 [podcasturl]: https://www.linuxserver.io/podcast/
 [appurl]: https://github.com/Novik/ruTorrent
 
-Find us for support at:
+Find [linuxserver.io][linuxserverurl] for support at:
 * [forum.linuxserver.io][forumurl]
 * [IRC][ircurl] on freenode at `#linuxserver.io`
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
