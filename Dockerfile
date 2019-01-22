@@ -14,14 +14,15 @@ RUN \
 	unzip && \
  echo "**** install remote ****" && \
  mkdir -p /app/remote \
-	/defaults/remote-conf && \
+	/defaults/remote-conf \
+	/tmp/remote/ && \
  curl -o \
  /tmp/remote.tar.gz -L \
 	"https://github.com/bachmma1/rEmote/archive/v2.1.1.tar.gz" && \
  tar xf \
- /tmp/remote.tar.gz -C \
-	/tmp/remote && \
- mv /tmp/remote/remote/
+     /tmp/remote.tar.gz \
+     -C /tmp/remote/ && \
+ mv /tmp/remote/rEmote-2.1.1/remote/* \
 	/app/remote/ && \
  echo "**** cleanup ****" && \
  rm -rf \
