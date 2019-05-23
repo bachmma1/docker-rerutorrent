@@ -1,5 +1,7 @@
 # docker-rerutorrent
-Linuxserver.io docker-rutorrent extended with rEmote (rtorrent-web-ui) originally from [messyo][messyourl] get back alive from [bachmma1][bachmma1url]
+[Linuxserver.io docker-rutorrent][linuxsrvrutorrent] extended with rEmote (rtorrent-web-ui).
+[rEmote][remoteurl] originally from [messyo][messyourl]; get back alive from [bachmma1][bachmma1url]
+[Rutorrent][rutorrenturl] is a popular rtorrent client with a webui for ease of use.
 
 [linuxserverurl]: https://linuxserver.io
 [forumurl]: https://forum.linuxserver.io
@@ -9,18 +11,14 @@ Linuxserver.io docker-rutorrent extended with rEmote (rtorrent-web-ui) originall
 [messyourl]: https://github.com/messyo
 [bachmma1url]: https://github.com/bachmma1
 [remotewikiurl]: https://github.com/bachmma1/rEmote/wiki
+[rutorrenturl]: https://github.com/Novik/ruTorrent
+[linuxsrvrutorrent]: https://github.com/linuxserver/docker-rutorrent
+[remoteurl]: https://github.com/bachmma1/rEmote
 
 Find [linuxserver.io][linuxserverurl] at:
 * [Discord](https://discord.gg/YWrKVTn) - realtime support / chat with the community and the team.
 * [IRC](https://irc.linuxserver.io) - on freenode at `#linuxserver.io`. Our primary support channel is Discord.
 * [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
-
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_small.png)](https://www.linuxserver.io/)
-
-## [linuxserver/rutorrent](https://github.com/linuxserver/docker-rutorrent)
-[Rutorrent](https://github.com/Novik/ruTorrent) is a popular rtorrent client with a webui for ease of use.
-
-[![rutorrent](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rutorrent.jpg)](https://github.com/Novik/ruTorrent)
 
 
 ## Usage
