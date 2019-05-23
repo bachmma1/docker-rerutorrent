@@ -7,7 +7,7 @@ server {
 
     listen 443 ssl;
 
-    root /app;
+    root /app/rutorrent;
     index index.php index.html index.htm;
 
     server_name _;
@@ -17,25 +17,10 @@ server {
 
     client_max_body_size 0;
 
-    location /rutorrent {
+    location / {
         location ~ .php$ {
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            # With php5-cgi alone:
+            fastcgi_split_path_info ^(.+\.php)(.*)$;
             fastcgi_pass 127.0.0.1:9000;
-            # With php5-fpm:
-            #fastcgi_pass unix:/var/run/php5-fpm.sock;
-            fastcgi_index index.php;
-            include /etc/nginx/fastcgi_params;
-        }
-    }
-
-	location /remote {
-        location ~ .php$ {
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            # With php5-cgi alone:
-            fastcgi_pass 127.0.0.1:9000;
-            # With php5-fpm:
-            #fastcgi_pass unix:/var/run/php5-fpm.sock;
             fastcgi_index index.php;
             include /etc/nginx/fastcgi_params;
         }
