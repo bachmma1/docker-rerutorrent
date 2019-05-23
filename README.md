@@ -15,32 +15,12 @@ Find [linuxserver.io][linuxserverurl] at:
 * [IRC](https://irc.linuxserver.io) - on freenode at `#linuxserver.io`. Our primary support channel is Discord.
 * [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
 
-# [linuxserver/rutorrent](https://github.com/linuxserver/docker-rutorrent)
-[![](https://img.shields.io/discord/354974912613449730.svg?logo=discord&label=LSIO%20Discord&style=flat-square)](https://discord.gg/YWrKVTn)
-[![](https://images.microbadger.com/badges/version/linuxserver/rutorrent.svg)](https://microbadger.com/images/linuxserver/rutorrent "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/linuxserver/rutorrent.svg)](https://microbadger.com/images/linuxserver/rutorrent "Get your own version badge on microbadger.com")
-![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/rutorrent.svg)
-![Docker Stars](https://img.shields.io/docker/stars/linuxserver/rutorrent.svg)
-[![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Pipeline-Builders/docker-rutorrent/master)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-rutorrent/job/master/)
-[![](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/rutorrent/latest/badge.svg)](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/rutorrent/latest/index.html)
+[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_small.png)](https://www.linuxserver.io/)
 
+## [linuxserver/rutorrent](https://github.com/linuxserver/docker-rutorrent)
 [Rutorrent](https://github.com/Novik/ruTorrent) is a popular rtorrent client with a webui for ease of use.
 
 [![rutorrent](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rutorrent.jpg)](https://github.com/Novik/ruTorrent)
-
-## Supported Architectures
-
-Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. We utilise the docker manifest for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list) and our announcement [here](https://blog.linuxserver.io/2019/02/21/the-lsio-pipeline-project/). 
-
-Simply pulling `linuxserver/rutorrent` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
-
-The architectures supported by this image are:
-
-| Architecture | Tag |
-| :----: | --- |
-| x86-64 | amd64-latest |
-| arm64 | arm64v8-latest |
-| armhf | arm32v7-latest |
 
 
 ## Usage
@@ -198,7 +178,7 @@ Link to the [wiki][remotewikiurl]
 
 
 ## Versions
-* **23.05.19 ** - Added rEmote as additional rTorrent Web UI (bachmma1)
+* **23.05.19:** - Added rEmote as additional rTorrent Web UI (bachmma1)
 * **20.05.19:** - Shift to building from official releases instead of commits.
 * **13.05.19:** - Add libffi and openssl.
 * **07.05.19:** - Add cloudscraper pip package.
