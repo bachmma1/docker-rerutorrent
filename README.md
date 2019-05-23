@@ -108,13 +108,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 &nbsp;
 ## Application Setup
 
-Webui can be found at `<your-ip>:80` , configuration files for rtorrent are in /config/rtorrent, php in config/php and for the webui in /config/rutorrent/settings.
-
-`Settings, changed by the user through the "Settings" panel in ruTorrent, are valid until rtorrent restart. After which all settings will be set according to the rtorrent config file (/config/rtorrent/rtorrent.rc),this is a limitation of the actual apps themselves.`
-
-`** It should also be noted that this container when run will create subfolders ,completed, incoming and watched in the /downloads volume.**`
-
-** The Port Assignments and configuration folder structure has been changed from the previous ubuntu based versions of this container and we recommend a clean install **
+`** It should be noted that this container when run will create subfolders ,completed, incoming and watched in the /downloads volume.**`
 
 ### rTorrent
 
@@ -123,8 +117,8 @@ Umask can be set in the /config/rtorrent/rtorrent.rc file by changing value in `
 If you are seeing this error `Caught internal_error: 'DhtRouter::get_tracker did not actually insert tracker.'.` , a possible fix is to disable dht in `/config/rtorrent/rtorrent.rc` by changing the following values.
 
 ```shell
-dht = disable
-peer_exchange = no
+dht.mode.set = disable
+protocol.pex.set = no
 ```
 
 If after updating you see an error about connecting to rtorrent in the webui,
@@ -132,8 +126,8 @@ remove or comment out these lines in /config/rtorrent/rtorrent.rc ,whatever valu
 Just setting them to no will still cause the error..
 
 ```
-use_udp_trackers = yes
-peer_exchange = yes
+trackers.use_udp.set = no
+protocol.pex.set = no
 ```
 
 ### ruTorrent
