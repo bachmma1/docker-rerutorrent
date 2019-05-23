@@ -1,14 +1,16 @@
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)](https://linuxserver.io)
+# docker-rerutorrent
+Linuxserver.io docker-rutorrent extended with rEmote (rtorrent-web-ui) originally from [messyo][messyourl] get back alive from [bachmma1][bachmma1url]
 
-The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring :-
+[linuxserverurl]: https://linuxserver.io
+[forumurl]: https://forum.linuxserver.io
+[ircurl]: https://www.linuxserver.io/irc/
+[podcasturl]: https://www.linuxserver.io/podcast/
+[appurl]: https://github.com/Novik/ruTorrent
+[messyourl]: https://github.com/messyo
+[bachmma1url]: https://github.com/bachmma1
+[remotewikiurl]: https://github.com/bachmma1/rEmote/wiki
 
- * regular and timely application updates
- * easy user mappings (PGID, PUID)
- * custom base image with s6 overlay
- * weekly base OS updates with common layers across the entire LinuxServer.io ecosystem to minimise space usage, down time and bandwidth
- * regular security updates
-
-Find us at:
+Find [linuxserver.io][linuxserverurl] at:
 * [Discord](https://discord.gg/YWrKVTn) - realtime support / chat with the community and the team.
 * [IRC](https://irc.linuxserver.io) - on freenode at `#linuxserver.io`. Our primary support channel is Discord.
 * [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
@@ -49,7 +51,7 @@ Here are some example snippets to help you get started creating a container.
 
 ```
 docker create \
-  --name=rutorrent \
+  --name=RemoteRuTorrent \
   -e PUID=1000 \
   -e PGID=1000 \
   -p 80:80 \
@@ -59,7 +61,7 @@ docker create \
   -v </path/to/rutorrent/config>:/config \
   -v </path/to/rutorrent/downloads>:/downloads \
   --restart unless-stopped \
-  linuxserver/rutorrent
+  bachmma1/RemoteRuTorrent
 ```
 
 
@@ -72,8 +74,8 @@ Compatible with docker-compose v2 schemas.
 version: "2"
 services:
   rutorrent:
-    image: linuxserver/rutorrent
-    container_name: rutorrent
+    image: bachmma1/RemoteRuTorrent
+    container_name: RemoteRuTorrent
     environment:
       - PUID=1000
       - PGID=1000
@@ -95,9 +97,10 @@ Container images are configured using parameters passed at runtime (such as thos
 | Parameter | Function |
 | :----: | --- |
 | `-p 80` | ruTorrent Web UI |
+| `-p 443` | ruTorrent Web UI Https
 | `-p 5000` | scgi port |
 | `-p 51413` | Bit-torrent port |
-| `-p 6881/udp` | Bit-torrent port |
+| `-p 6881/udp` | Bit-torrent DHT port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-v /config` | where ruTorrent should store it's config files |
@@ -116,6 +119,13 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
 
+## Configuration files
+* php:			/config/php
+* rtorrent:		/config/rtorrent
+* rutorrent:	/config/rutorrent/settings
+* rEmote:		/config/remote
+
+
 
 &nbsp;
 ## Application Setup
@@ -124,11 +134,11 @@ Webui can be found at `<your-ip>:80` , configuration files for rtorrent are in /
 
 `Settings, changed by the user through the "Settings" panel in ruTorrent, are valid until rtorrent restart. After which all settings will be set according to the rtorrent config file (/config/rtorrent/rtorrent.rc),this is a limitation of the actual apps themselves.`
 
-** Important note for unraid users or those running services such as a webserver on port 80, change port 80 assignment **
-
 `** It should also be noted that this container when run will create subfolders ,completed, incoming and watched in the /downloads volume.**`
 
 ** The Port Assignments and configuration folder structure has been changed from the previous ubuntu based versions of this container and we recommend a clean install **
+
+### rTorrent
 
 Umask can be set in the /config/rtorrent/rtorrent.rc file by changing value in `system.umask.set`
 
@@ -148,69 +158,47 @@ use_udp_trackers = yes
 peer_exchange = yes
 ```
 
+### ruTorrent
 
+ruTorrent can be found at `<your-ip>:80/rutorrent`
+
+`Settings, changed by the user through the "Settings" panel in ruTorrent, are valid until rtorrent restart. After which all settings will be set according to the rtorrent config file (/config/rtorrent/rtorrent.rc),this is a limitation of the actual apps themselves.`
+
+### rEmote
+
+rEmote can be found at `<your-ip>:80/remote`
+
+rEmote needs a mariadb backend to work properly. Make sure you have one set up and configured it:
+
+```mariadb
+CREATE DATABASE IF NOT EXISTS 'remoteDB';
+CREATE USER 'remote'@'<ip of your rtorrent-docker-container>' IDENTIFIED BY 'remotepassword0815';
+GRANT USAGE ON * . * TO 'remote'@'<ip of your rtorrent-docker-container>' IDENTIFIED BY 'remotepassword0815' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+GRANT ALL PRIVILEGES ON 'remoteDB' . * TO 'remote'@'<ip of your rtorrent-docker-container>';
+FLUSH PRIVILEGES;
+quit
+```
+
+`On very first run you have to install remote via <your-ip>:80/remote/install`
+
+Link to the [wiki][remotewikiurl]
+
+## UNRAID users
+
+** Important note for unraid users or those running services such as a webserver on port 80, change port 80 assignment **
 
 ## Support Info
 
-* Shell access whilst the container is running: `docker exec -it rutorrent /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f rutorrent`
+* Shell access whilst the container is running: `docker exec -it RemoteRuTorrent /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f RemoteRuTorrent`
 * container version number 
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' rutorrent`
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' RemoteRuTorrent`
 * image version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/rutorrent`
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' bachmma1/RemoteRuTorrent`
 
-## Updating Info
-
-Most of our images are static, versioned, and require an image update and container recreation to update the app inside. With some exceptions (ie. nextcloud, plex), we do not recommend or support updating apps inside the container. Please consult the [Application Setup](#application-setup) section above to see if it is recommended for the image.  
-  
-Below are the instructions for updating containers:  
-  
-### Via Docker Run/Create
-* Update the image: `docker pull linuxserver/rutorrent`
-* Stop the running container: `docker stop rutorrent`
-* Delete the container: `docker rm rutorrent`
-* Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
-* Start the new container: `docker start rutorrent`
-* You can also remove the old dangling images: `docker image prune`
-
-### Via Docker Compose
-* Update all images: `docker-compose pull`
-  * or update a single image: `docker-compose pull rutorrent`
-* Let compose update all containers as necessary: `docker-compose up -d`
-  * or update a single container: `docker-compose up -d rutorrent`
-* You can also remove the old dangling images: `docker image prune`
-
-### Via Watchtower auto-updater (especially useful if you don't remember the original parameters)
-* Pull the latest image at its tag and replace it with the same env variables in one run:
-  ```
-  docker run --rm \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  containrrr/watchtower \
-  --run-once rutorrent
-  ```
-* You can also remove the old dangling images: `docker image prune`
-
-## Building locally
-
-If you want to make local modifications to these images for development purposes or just to customize the logic: 
-```
-git clone https://github.com/linuxserver/docker-rutorrent.git
-cd docker-rutorrent
-docker build \
-  --no-cache \
-  --pull \
-  -t linuxserver/rutorrent:latest .
-```
-
-The ARM variants can be built on x86_64 hardware using `multiarch/qemu-user-static`
-```
-docker run --rm --privileged multiarch/qemu-user-static:register --reset
-```
-
-Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64`.
 
 ## Versions
-
+* **23.05.19 ** - Added rEmote as additional rTorrent Web UI (bachmma1)
 * **20.05.19:** - Shift to building from official releases instead of commits.
 * **13.05.19:** - Add libffi and openssl.
 * **07.05.19:** - Add cloudscraper pip package.
