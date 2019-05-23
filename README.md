@@ -3,23 +3,11 @@
 
 [rEmote][remoteurl] originally from [messyo][messyourl]; updated and refreshed from [bachmma1][bachmma1url]
 
-[linuxserverurl]: https://linuxserver.io
-[forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/irc/
-[podcasturl]: https://www.linuxserver.io/podcast/
-[appurl]: https://github.com/Novik/ruTorrent
 [messyourl]: https://github.com/messyo
 [bachmma1url]: https://github.com/bachmma1
 [remotewikiurl]: https://github.com/bachmma1/rEmote/wiki
-[rutorrenturl]: https://github.com/Novik/ruTorrent
 [linuxsrvrutorrent]: https://github.com/linuxserver/docker-rutorrent
 [remoteurl]: https://github.com/bachmma1/rEmote
-
-Find [linuxserver.io][linuxserverurl] at:
-* [Discord](https://discord.gg/YWrKVTn) - realtime support / chat with the community and the team.
-* [IRC](https://irc.linuxserver.io) - on freenode at `#linuxserver.io`. Our primary support channel is Discord.
-* [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
-
 
 ## Usage
 
