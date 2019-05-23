@@ -1,7 +1,7 @@
 # docker-rerutorrent
 [Linuxserver.io docker-rutorrent][linuxsrvrutorrent] extended with rEmote (rtorrent-web-ui).
-[rEmote][remoteurl] originally from [messyo][messyourl]; get back alive from [bachmma1][bachmma1url]
-[Rutorrent][rutorrenturl] is a popular rtorrent client with a webui for ease of use.
+
+[rEmote][remoteurl] originally from [messyo][messyourl]; updated and refreshed from [bachmma1][bachmma1url]
 
 [linuxserverurl]: https://linuxserver.io
 [forumurl]: https://forum.linuxserver.io
@@ -176,32 +176,4 @@ Link to the [wiki][remotewikiurl]
 
 
 ## Versions
-* **23.05.19:** - Added rEmote as additional rTorrent Web UI (bachmma1)
-* **20.05.19:** - Shift to building from official releases instead of commits.
-* **13.05.19:** - Add libffi and openssl.
-* **07.05.19:** - Add cloudscraper pip package.
-* **11.04.19:** - Fix warnings in webui by adding python3, procps and pip packages.
-* **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
-* **22.02.19:** - Rebasing to alpine 3.9.
-* **03.11.18:** - Add pipeline and multi arch logic to repo.
-* **27.08.18:** - Add bind tools package.
-* **22.08.18:** - Rebase to alpine 3.8.
-* **08.12.17:** - Rebase to alpine 3.7, add sox package.
-* **28.10.17:** - Mediainfo moved from testing to community repo.
-* **09.10.17:** - Use repo version of mediainfo to shorten build time.
-* **28.05.17:** - Fix permissions on secondary temp folder of nginx.
-* **26.05.17:** - Rebase to alpine 3.6.
-* **03.05.17:** - Fix log permissions.
-* **18.03.17:** - Note in readme about disabling dht in some circumstances.
-* **24.02.17:** - Patch a source file to quash rss https bug.
-* **29.01.17:** - Rebase to alpine 3.5.
-* **20.11.16:** - Add php7-mbstring package, bump mediainfo to 0.7.90.
-* **14.10.16:** - Add version layer information.
-* **04.10.16:** - Remove redundant sessions folder.
-* **30.09.16:** - Fix umask.
-* **21.09.16:** - Bump mediainfo, reorg dockerfile, add full wget package.
-* **09.09.16:** - Add layer badges to README.
-* **28.08.16:** - Add badges to README, bump mediainfo version to 0.7.87.
-* **07.08.16:** - Perms fix on nginx tmp folder, also exposed php.ini for editing by use in /config/php.
-* **26.07.16:** - Rebase to alpine.
-* **08.03.16:** - Initial Release.
+* **23.05.19:** - Added rEmote as additional rTorrent Web UI
