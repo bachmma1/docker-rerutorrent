@@ -10,6 +10,10 @@ LABEL maintainer="bachmma1"
 RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
+	php7-xmlrpc \
+	php7-gd \
+	php7-pdo \
+	php7-pdo_mysql \
 	coreutils \
 	htop \
 	wget \
