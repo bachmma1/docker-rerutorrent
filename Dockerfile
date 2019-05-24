@@ -10,10 +10,10 @@ LABEL maintainer="bachmma1"
 RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
-	rar \
+	coreutils \
+	htop \
 	wget \
 	bzip2 \
-	nohup \
 	mktorrent \
 	unzip && \
  echo "**** install remote ****" && \
