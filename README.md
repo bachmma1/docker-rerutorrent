@@ -21,6 +21,7 @@ docker create \
   -e PUID=1000 \
   -e PGID=1000 \
   -p 80:80 \
+  -p 8080:8080 \
   -p 5000:5000 \
   -p 51413:51413 \
   -p 6881:6881/udp \
@@ -50,6 +51,7 @@ services:
       - </path/to/rutorrent/downloads>:/downloads
     ports:
       - 80:80
+	  - 8080:8080
       - 5000:5000
       - 51413:51413
       - 6881:6881/udp
@@ -64,6 +66,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | :----: | --- |
 | `-p 80` | ruTorrent Web UI |
 | `-p 443` | ruTorrent Web UI Https
+| `-p 8080` | rEmote Web UI Http
+| `-p 8443` | rEmote Web UI Https
 | `-p 5000` | scgi port |
 | `-p 51413` | Bit-torrent port |
 | `-p 6881/udp` | Bit-torrent DHT port |

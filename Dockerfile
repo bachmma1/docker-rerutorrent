@@ -9,11 +9,16 @@ LABEL maintainer="bachmma1"
 
 RUN \
  echo "**** install runtime packages ****" && \
- apk add --no-cache \
-	zip && \
+ apk add --no-cache --upgrade \
+	rar \
+	wget \
+	bzip2 \
+	nohup \
+	mktorrent \
 	unzip && \
  echo "**** install remote ****" && \
- mkdir -p /app/remote \
+ mkdir -p \ 
+    /app/remote \
 	/defaults/remote-conf \
 	/tmp/remote/ && \
  curl -o \
@@ -33,5 +38,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 80 443
+EXPOSE 80 443 8080 8443
 VOLUME /config /downloads
