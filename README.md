@@ -124,15 +124,19 @@ protocol.pex.set = no
 
 ### ruTorrent
 
-ruTorrent can be found at `<your-ip>:80/rutorrent`
+ruTorrent can be found at `<your-ip>:80`
 
 `Settings, changed by the user through the "Settings" panel in ruTorrent, are valid until rtorrent restart. After which all settings will be set according to the rtorrent config file (/config/rtorrent/rtorrent.rc),this is a limitation of the actual apps themselves.`
 
 ### rEmote
 
-rEmote can be found at `<your-ip>:80/remote`
+rEmote can be found at `<your-ip>:8080`
 
 rEmote needs a mariadb backend to work properly. Make sure you have one set up and configured it:
+
+`On very first run you have to install remote via <your-ip>:8080/install`
+
+Link to the [wiki][remotewikiurl]
 
 ```mariadb
 CREATE DATABASE IF NOT EXISTS 'remoteDB';
@@ -143,9 +147,6 @@ FLUSH PRIVILEGES;
 quit
 ```
 
-`On very first run you have to install remote via <your-ip>:80/remote/install`
-
-Link to the [wiki][remotewikiurl]
 
 ## UNRAID users
 

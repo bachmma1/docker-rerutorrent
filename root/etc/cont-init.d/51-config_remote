@@ -7,7 +7,7 @@ mkdir -p \
 cd /defaults/remote-conf || exit
 shopt -s globstar nullglob
 
-[[ ! -e /config/remote/config.php ]] && \ 
+[[ ! -e /config/remote/config.php ]] && \
 	cp /defaults/remote-conf/config.php /config/remote/config.php
 ln -s /config/remote/config.php /app/remote/config.php
 
