@@ -10,6 +10,7 @@ LABEL maintainer="bachmma1"
 RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
+	openrc \
 	php7-xmlrpc \
 	php7-gd \
 	php7-pdo \
@@ -36,7 +37,9 @@ RUN \
  echo "**** cleanup ****" && \
  rm -rf \
 	/etc/nginx/conf.d/default.conf \
-	/tmp/*
+	/tmp/* && \
+ echo "**** restart nginx ****" && \
+ rc-service nginx restart
 
 # add local files
 COPY root/ /
