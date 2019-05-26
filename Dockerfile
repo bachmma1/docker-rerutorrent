@@ -28,7 +28,7 @@ RUN \
 	/tmp/remote/ && \
  curl -o \
  /tmp/remote.tar.gz -L \
-	"https://github.com/bachmma1/rEmote/archive/v2.1.2.tar.gz" && \
+	"https://github.com/bachmma1/rEmote/archive/V2.1.2.tar.gz" && \
  tar xf \
  /tmp/remote.tar.gz \
      -C /tmp/remote/ && \
