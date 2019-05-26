@@ -9,8 +9,14 @@ shopt -s globstar nullglob
 
 [[ ! -e /config/remote/config.php ]] && \
 	cp /defaults/remote-conf/config.php /config/remote/config.php
-ln -s /config/remote/config.php /app/remote/config.php
+	
+[[ ! -e /app/remote/config.php ]] && \
+	ln -s /config/remote/config.php /app/remote/config.php
 
 chown -R abc:abc \
 	/config/remote \
 	/app/remote
+	
+echo "**** restart nginx ****"
+rc-service nginx stop
+rc-service nginx start

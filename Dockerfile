@@ -37,9 +37,7 @@ RUN \
  echo "**** cleanup ****" && \
  rm -rf \
 	/etc/nginx/conf.d/default.conf \
-	/tmp/* && \
- echo "**** restart nginx ****" && \
- rc-service nginx restart
+	/tmp/*
 
 # add local files
 COPY root/ /
