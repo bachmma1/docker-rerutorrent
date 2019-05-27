@@ -12,6 +12,12 @@ shopt -s globstar nullglob
 	
 [[ ! -e /app/remote/config.php ]] && \
 	ln -s /config/remote/config.php /app/remote/config.php
+	
+# delete the default directories from linuxserver:docker-rutorrent
+rm -fr \
+	/downloads/completed \
+	/downloads/incoming \
+	/downloads/watched
 
 chown -R abc:abc \
 	/config/remote \
