@@ -100,7 +100,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 &nbsp;
 ## Application Setup
 
-`** It should be noted that this container when run will create subfolders ,completed, incoming and watched in the /downloads volume.**`
+`** It should be noted that this container delete the subfolders /downloads/{completed, incoming and watched} from [Linuxserver.io docker-rutorrent][linuxsrvrutorrent] when run.**`
 
 ### rTorrent
 
