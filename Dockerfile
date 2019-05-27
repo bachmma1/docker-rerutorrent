@@ -28,11 +28,11 @@ RUN \
 	/tmp/remote/ && \
  curl -o \
  /tmp/remote.tar.gz -L \
-	"https://github.com/bachmma1/rEmote/archive/v2.1.3.tar.gz" && \
+	"https://github.com/bachmma1/rEmote/archive/v2.1.4.tar.gz" && \
  tar xf \
  /tmp/remote.tar.gz \
      -C /tmp/remote/ && \
- mv /tmp/remote/rEmote-2.1.3/remote/* \
+ mv /tmp/remote/rEmote-2.1.4/remote/* \
 	/app/remote/ && \
  echo "**** cleanup ****" && \
  rm -rf \
