@@ -28,7 +28,7 @@ rm -fr \
 	/downloads/watched
 
 echo "**** check 2FA env ****"
-if [$TFA_MODE = "DUO"] 
+if [ "$TFA_MODE" == "DUO" ] 
 then
 	mkdir -p \
 	/config/duo/
