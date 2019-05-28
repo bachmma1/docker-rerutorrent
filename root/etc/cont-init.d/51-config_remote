@@ -1,12 +1,11 @@
 #!/usr/bin/with-contenv bash
 
-TFA_MODE=${TFA_MODE:""}
-
-DUO_i_KEY=${DUO_i_KEY:""}
-DUO_s_KEY=${DUO_s_KEY:""}
-DUO_a_KEY=${DUO_a_KEY:""}
-DUO_API_HOST=${DUO_API_HOST:""}
-DUO_POST_ACTION_URL=${DUO_POST_ACTION_URL:""}
+TFA_MODE=${TFA_MODE:-""}
+DUO_i_KEY=${DUO_i_KEY:-""}
+DUO_s_KEY=${DUO_s_KEY:-""}
+DUO_a_KEY=${DUO_a_KEY:-""}
+DUO_API_HOST=${DUO_API_HOST:-""}
+DUO_POST_ACTION_URL=${DUO_POST_ACTION_URL:-""}
 
 
 # make folders
