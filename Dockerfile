@@ -6,7 +6,6 @@ ARG VERSION
 LABEL build_version="Bachmma1 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="bachmma1"
 
-
 RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
@@ -42,6 +41,15 @@ RUN \
 # add local files
 COPY root/ /
 
+# Environments variables
+ENV TFA_MODE=""
+ENV DUO_i_KEY=""
+ENV DUO_s_KEY=""
+ENV DUO_a_KEY=""
+ENV DUO_API_HOST=""
+ENV DUO_POST_ACTION_URL=""
+
 # ports and volumes
 EXPOSE 80 443 8080 8443
+
 VOLUME /config /downloads

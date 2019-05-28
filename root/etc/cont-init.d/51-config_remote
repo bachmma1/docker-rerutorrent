@@ -1,5 +1,14 @@
 #!/usr/bin/with-contenv bash
 
+TFA_MODE=${TFA_MODE:""}
+
+DUO_i_KEY=${DUO_i_KEY:""}
+DUO_s_KEY=${DUO_s_KEY:""}
+DUO_a_KEY=${DUO_a_KEY:""}
+DUO_API_HOST=${DUO_API_HOST:""}
+DUO_POST_ACTION_URL=${DUO_POST_ACTION_URL:""}
+
+
 # make folders
 mkdir -p \
 	/config/remote/ \
@@ -18,6 +27,31 @@ rm -fr \
 	/downloads/completed \
 	/downloads/incoming \
 	/downloads/watched
+
+echo "**** check 2FA env ****"
+if [$TFA_MODE = "DUO"] 
+then
+	mkdir -p \
+	/config/duo/
+	
+	cd /defaults/duo-conf || exit
+	
+	[[ ! -e /config/duo/duo.php ]] && \
+	cp /defaults/duo-conf/duo.php /config/duo/duo.php
+	
+	[[ ! -e /app/remote/js/Duo-Web-v2.min.js ]] && \
+	cp /defaults/duo-conf/Duo-Web-v2.min.js /app/remote/js/Duo-Web-v2.min.js
+	
+	# copy (overwrite) default 2fa login.php to app dir
+	cp -rf /defaults/duo-conf/login.php /app/remote/inc/login.php
+	
+	# substitude individual params with environment vars
+	sed -i -e 's!%DUO_i_KEY%!'"$DUO_i_KEY"'!g' /app/remote/inc/login.php
+	sed -i -e 's!%DUO_s_KEY%!'"$DUO_s_KEY"'!g' /app/remote/inc/login.php
+	sed -i -e 's!%DUO_a_KEY%!'"$DUO_a_KEY"'!g' /app/remote/inc/login.php
+	sed -i -e 's!%DUO_API_HOST%!'"$DUO_API_HOST"'!g' /app/remote/inc/login.php
+	sed -i -e 's!%DUO_POST_ACTION_URL%!'"$DUO_POST_ACTION_URL"'!g' /app/remote/inc/login.php	
+fi
 
 chown -R abc:abc \
 	/config/remote \
