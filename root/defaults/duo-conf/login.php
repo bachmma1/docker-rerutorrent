@@ -2,7 +2,7 @@
 
 require_once(TO_ROOT."styles/{$settings['default_style']}/style.php");
 require_once(TO_ROOT."languages/{$settings['default_lng']}/base.lng.php");
-require_once(TO_ROOT."/config/duo/duo.php");
+require_once(TO_ROOT."inc/duo.php");
 
 $out->javascripts = $stylejs;
 $out->stylesheets = $stylesheets;

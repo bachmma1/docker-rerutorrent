@@ -30,13 +30,10 @@ rm -fr \
 echo "**** check 2FA env ****"
 if [ "$TFA_MODE" == "DUO" ] 
 then
-	mkdir -p \
-	/config/duo/
-	
 	cd /defaults/duo-conf || exit
 	
-	[[ ! -e /config/duo/duo.php ]] && \
-	cp /defaults/duo-conf/duo.php /config/duo/duo.php
+	[[ ! -e /app/remote/inc/duo.php ]] && \
+	cp /defaults/duo-conf/duo.php /app/remote/inc/duo.php
 	
 	[[ ! -e /app/remote/js/Duo-Web-v2.min.js ]] && \
 	cp /defaults/duo-conf/Duo-Web-v2.min.js /app/remote/js/Duo-Web-v2.min.js

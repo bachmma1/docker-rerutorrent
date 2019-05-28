@@ -1,13 +1,16 @@
-# docker-rerutorrent
+# docker-rerutorrent with duo.com 2FA for rEmote
 [Linuxserver.io docker-rutorrent][linuxsrvrutorrent] extended with rEmote (rtorrent-web-ui).
 
-[rEmote][remoteurl] originally from [messyo][messyourl]; updated and refreshed from [bachmma1][bachmma1url]
+[rEmote][remoteurl] originally from [messyo][messyourl]; updated and refreshed from [bachmma1][bachmma1url].
+
+[rEmote][remoteurl] secured via [Duo][duourl] 2FA service.
 
 [messyourl]: https://github.com/messyo
 [bachmma1url]: https://github.com/bachmma1
 [remotewikiurl]: https://github.com/bachmma1/rEmote/wiki
 [linuxsrvrutorrent]: https://github.com/linuxserver/docker-rutorrent
 [remoteurl]: https://github.com/bachmma1/rEmote
+[duourl]: https://duo.com
 
 ## Usage
 
@@ -20,6 +23,12 @@ docker create \
   --name=RemoteRuTorrent \
   -e PUID=1000 \
   -e PGID=1000 \
+  -e TFA_MODE=DUO
+  -e DUO_i_KEY=[YOUR DUO Integration key]
+  -e DUO_s_KEY=[YOUR DUO Secret key]
+  -e DUO_a_KEY=[YOUR DUO aKey for DUO]
+  -e DUO_API_HOST=[YOUR DUO API hostname]
+  -e DUO_POST_ACTION_URL=[YOUR POST ACTION URL when 2FA success]
   -p 80:80 \
   -p 8080:8080 \
   -p 5000:5000 \
@@ -46,6 +55,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+	  - DUO_i_KEY=[YOUR DUO Integration key]
+	  - DUO_s_KEY=[YOUR DUO Secret key]
+	  - DUO_a_KEY=[YOUR DUO aKey for DUO]
+	  - DUO_API_HOST=[YOUR DUO API hostname]
+	  - DUO_POST_ACTION_URL=[YOUR POST ACTION URL when 2FA success]
     volumes:
       - </path/to/rutorrent/config>:/config
       - </path/to/rutorrent/downloads>:/downloads
@@ -73,6 +87,11 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 6881/udp` | Bit-torrent DHT port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e DUO_i_KEY=[YOUR DUO Integration key]` | Your duo.com integration key from WebSDK |
+| `-e DUO_s_KEY=[YOUR DUO Secret key]` | Your duo.com secret key from WebSDK |
+| `-e DUO_a_KEY=[YOUR DUO aKey for DUO]` | Your generated aKey for duo.com WebSDK |
+| `-e DUO_API_HOST=[YOUR DUO API hostname]` | Your duo.com API hostname |
+| `-e DUO_POST_ACTION_URL=[YOUR POST ACTION URL when 2FA success]` | The success post action URL - normally the rEmote-base-URL ending with index.php |
 | `-v /config` | where ruTorrent should store it's config files |
 | `-v /downloads` | path to your downloads folder |
 
@@ -100,7 +119,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 &nbsp;
 ## Application Setup
 
-`** It should be noted that this container when run will create subfolders ,completed, incoming and watched in the /downloads volume.**`
+`** It should be noted that this container when run will delete the subfolders completed, incoming and watched in the /downloads volume created by [Linuxserver.io docker-rutorrent][linuxsrvrutorrent].**`
 
 ### rTorrent
 
@@ -163,4 +182,5 @@ quit
 
 
 ## Versions
+* **28.05.19:** - Added 2FA for [rEmote][remoteurl] via [Duo][duourl]
 * **23.05.19:** - Added rEmote as additional rTorrent Web UI
