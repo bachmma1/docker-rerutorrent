@@ -14,6 +14,7 @@ RUN \
 	php7-gd \
 	php7-pdo \
 	php7-pdo_mysql \
+	php7-sysvsem \
 	coreutils \
 	htop \
 	wget \
