@@ -34,6 +34,7 @@ RUN \
      -C /tmp/remote/ && \
  mv /tmp/remote/rEmote-2.1.4/remote/* \
 	/app/remote/ && \
+ chmod -R 777 /var/tmp/ && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/etc/nginx/conf.d/default.conf \
