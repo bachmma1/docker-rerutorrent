@@ -3,6 +3,17 @@ upstream backendrtorrent {
 }
 
 server {
+
+	##
+    # Override temp file locations
+    ##
+    client_body_temp_path /config/nginx/tmp/client_body 1 2;
+    proxy_temp_path  /config/nginx/tmp/proxy;
+    fastcgi_temp_path  /config/nginx/tmp/fastcgi 1 2;
+    uwsgi_temp_path  /config/nginx/tmp/uwsgi;
+    scgi_temp_path  /config/nginx/tmp/scgi;
+
+
 	listen 8080 default_server;
 	
 	listen 8443 ssl;
@@ -28,6 +39,17 @@ server {
 }
 
 server {
+
+	##
+    # Override temp file locations
+    ##
+    client_body_temp_path /config/nginx/tmp/client_body 1 2;
+    proxy_temp_path  /config/nginx/tmp/proxy;
+    fastcgi_temp_path  /config/nginx/tmp/fastcgi 1 2;
+    uwsgi_temp_path  /config/nginx/tmp/uwsgi;
+    scgi_temp_path  /config/nginx/tmp/scgi;
+
+
     listen 80 default_server;
 
     listen 443 ssl;
