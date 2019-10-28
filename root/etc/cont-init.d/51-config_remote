@@ -21,6 +21,29 @@ shopt -s globstar nullglob
 [[ ! -e /app/remote/config.php ]] && \
 	ln -s /config/remote/config.php /app/remote/config.php
 	
+# check if nginx temp directories are there
+[[ ! -d /config/nginx/tmp ]] && \
+	mkdir -p /config/nginx/tmp
+	
+[[ ! -d /config/nginx/tmp/client_body ]] && \
+	mkdir -p /config/nginx/tmp/client_body
+	
+[[ ! -d /config/nginx/tmp/fastcgi ]] && \
+	mkdir -p /config/nginx/tmp/fastcgi
+	
+[[ ! -d /config/nginx/tmp/proxy ]] && \
+	mkdir -p /config/nginx/tmp/proxy
+
+[[ ! -d /config/nginx/tmp/scgi ]] && \
+	mkdir -p /config/nginx/tmp/scgi
+	
+[[ ! -d /config/nginx/tmp/uwsgi ]] && \
+	mkdir -p /config/nginx/tmp/uwsgi
+
+# and give all of them 775
+chmod -R 775 /config/nginx/tmp
+	
+	
 # delete the default directories from linuxserver:docker-rutorrent
 rm -fr \
 	/downloads/completed \
