@@ -30,7 +30,8 @@ server {
 	
 	location / {
 		location ~ .php$ {
-            fastcgi_split_path_info ^(.+\.php)(.*)$;
+            fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+            try_files $fastcgi_script_name =404;
             fastcgi_pass 127.0.0.1:9000;
             fastcgi_index index.php;
             include /etc/nginx/fastcgi_params;
@@ -66,7 +67,8 @@ server {
 
     location / {
         location ~ .php$ {
-            fastcgi_split_path_info ^(.+\.php)(.*)$;
+            fastcgi_split_path_info ^(.+?\.php)(\/.*|)$;
+            try_files $fastcgi_script_name =404;
             fastcgi_pass 127.0.0.1:9000;
             fastcgi_index index.php;
             include /etc/nginx/fastcgi_params;
